@@ -7,7 +7,7 @@
         <img class="w-40 h-40 rounded-full" src="{{ "storage/$user->image" }}" alt="user avatar"/>
 
         <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-            {{ __("Utualize sua imagemmmmm.") }}
+            {{ __("Utualize sua imagem.") }}
         </p>
     </header>
 
@@ -28,7 +28,7 @@
         </div>
 
         <div class="flex items-center gap-4 mt-4">
-            <x-primary-button>{{ __('Save') }}</x-primary-button>
+            <x-primary-button>{{ __('Salvar') }}</x-primary-button>
         </div>
     </form>
 </section>

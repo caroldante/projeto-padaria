@@ -10,8 +10,13 @@ class ImageController extends Controller
 {
     public function update(UpdateImageRequest $request)
     {   
-        $path = $request->file('image')->store('image_profile', 'public');
-        // dd($path);
+        $path = Storage::disk('pubic')->put('avatars', $request->file('avatar'));
+        // $path = $request->file('image')->store('image_profile', 'public');
+        
+        if ($oldImage = $request->user()->image) {
+            Storage::disk('public')->delete($oldAvatar);
+        }
+
         auth()->user()->update(['image' => "/$path"]);
         
         return redirect(route('profile.edit'))->with('message', 'Imagem de Perfil atualizada!');
