@@ -4,6 +4,8 @@
             {{ __('imagem') }}
         </h2>
 
+        <img class="w-40 h-40 rounded-full" src="{{ "storage/$user->image" }}" alt="user avatar"/>
+
         <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
             {{ __("Utualize sua imagemmmmm.") }}
         </p>
