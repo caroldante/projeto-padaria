@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="font-lateef text-xg bg-cafune dark:bg-black border-b border-gray-100 dark:border-gray-700">
+<nav x-data="{ open: false }" class="font-lateef bg-cafune dark:bg-black border-b border-gray-100 dark:border-gray-700">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -6,16 +6,16 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
+                        <x-application-logo class="block h-9 w-auto fill-auto text-gray-800 dark:text-gray-200" />
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
-                <div class="hidden space-x-6 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('/')" :active="request()->routeIs('/')">
+                <div class="hidden space-x-5 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link class="ml-10" :href="route('/')" :active="request()->routeIs('/')">
                         {{ __('HOME') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('sobre-nos')" :active="request()->routeIs('sobre-nos')">
+                    <x-nav-link class="text-5x1" :href="route('sobre-nos')" :active="request()->routeIs('sobre-nos')">
                         {{ __('SOBRE NÓS') }}
                     </x-nav-link>
                     <x-nav-link :href="route('cardapio')" :active="request()->routeIs('cardapio')">
@@ -37,7 +37,7 @@
                 <div class="hidden sm:flex sm:items-center sm:ml-6">
                     <x-dropdown align="right" width="48">
                         <x-slot name="trigger">
-                            <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
+                            <button class="inline-flex items-center px-3 py-2 border border-transparent text-lg leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
                                 <div>{{ Auth::user()->name }}</div>
 
                                 <div class="ml-1">
@@ -50,7 +50,7 @@
 
                         <x-slot name="content">
                             <x-dropdown-link :href="route('profile.edit')">
-                                {{ __('Perfil') }}
+                                {{ __('PERFIL') }}
                             </x-dropdown-link>
 
                             <!-- Authentication -->
@@ -59,7 +59,7 @@
 
                                 <x-dropdown-link :href="route('logout')" onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                                    {{ __('Sair') }}
+                                    {{ __('SAIR') }}
                                 </x-dropdown-link>
                             </form>
                         </x-slot>
@@ -73,7 +73,7 @@
                 <a href="{{ route('register') }}" class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">CADASTRE-SE</a>
                 @endif
                 -->
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                <div class="hidden space-x-4 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('login')">
                         {{ __('ENTRAR') }}
                     </x-nav-link>

@@ -1,34 +1,37 @@
 <section>
     <header>
         <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
-            {{ __('imagem') }}
+            {{ __('Imagem de Perfil') }}
         </h2>
-
-        <img class="w-40 h-40 rounded-full" src="{{ "storage/$user->image" }}" alt="user avatar"/>
-
         <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-            {{ __("Utualize sua imagem.") }}
+            {{ __("Atualize sua imagem de perfil.") }}
         </p>
+
+        <img class="my-4 w-40 h-40 rounded-full" src="{{ "storage/$user->image" }}" alt="user avatar"/>
+
+        
     </header>
 
+    
+
+    <form id="profileImageForm" method="post" action="{{ route('profile.image') }}" enctype="multipart/form-data">
+        @method('patch')
+        @csrf
+
+        <div>           
+                <x-image-input id="image" name="image" type="file" class="mt-1 block w-full" :value="old('image', $user->image)" required autofocus autocomplete="image" />
+           
+            <x-input-error class="mt-2" :messages="$errors->get('image')" />
+        </div>
+        <!--
+        <div class="flex items-center gap-4 mt-4">
+            <x-primary-button>{{ __('Salvar') }}</x-primary-button>
+        </div>
+        -->
+    </form>
     @if (session('message'))
     <div class="alert alert-success">
         {{ session('message') }}
     </div>
     @endif
-
-    <form method="post" action="{{ route('profile.image') }}" enctype="multipart/form-data">
-        @method('patch')
-        @csrf
-
-        <div>
-            <x-input-label for="image" :value="__('Foto de Perfil')" />
-            <x-text-input id="image" name="image" type="file" class="mt-1 block w-full" :value="old('image', $user->image)" required autofocus autocomplete="image" />
-            <x-input-error class="mt-2" :messages="$errors->get('image')" />
-        </div>
-
-        <div class="flex items-center gap-4 mt-4">
-            <x-primary-button>{{ __('Salvar') }}</x-primary-button>
-        </div>
-    </form>
 </section>
