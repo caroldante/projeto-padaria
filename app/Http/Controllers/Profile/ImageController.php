@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Profile;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Profile\Storage;
 use Illuminate\Http\Request;
 use App\Http\Requests\UpdateImageRequest;
 
@@ -20,7 +21,6 @@ class ImageController extends Controller
         auth()->user()->update(['image' => "/$path"]);
         
         return redirect(route('profile.edit'))->with('message', 'Imagem de Perfil atualizada!');
-
 
         // return back()->with(['message' => 'Foto de perfil atualizada']);
     }
