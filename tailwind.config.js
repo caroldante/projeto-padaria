@@ -9,10 +9,17 @@ export default {
         './resources/views/**/*.blade.php',
     ],
 
+    darkMode: 'class', // Mude para media para alterar com o sistema do usuario
+
     theme: {
         extend: {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                lateef: ['Lateef', 'serif'],
+            },
+
+            backgroundColor: {
+                'cafune': '#8190A0CC'
             },
         },
     },
