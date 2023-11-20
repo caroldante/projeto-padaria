@@ -18,8 +18,11 @@
         @method('patch')
         @csrf
 
-        <div>           
-                <x-image-input id="image" name="image" type="file" class="mt-1 block w-full" :value="old('image', $user->image)" required autofocus autocomplete="image" />
+        <div>
+                <x-avatar-input required>
+                    {{ __('Importar Nova Foto') }}
+                </x-avatar-input>
+
            
             <x-input-error class="mt-2" :messages="$errors->get('image')" />
         </div>
