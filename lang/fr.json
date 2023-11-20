@@ -1,4 +1,9 @@
 {
+    "HOME": "HOME",
+    "Phone": "Phone",
+    "Address": "Address",
+
+
     "(and :count more error)": "(et :count erreur en plus)",
     "(and :count more errors)": "(et :count erreurs en plus)",
     "A new verification link has been sent to the email address you provided during registration.": "Un nouveau lien de vérification a été envoyé à l'adresse e-mail que vous avez indiquée lors de votre inscription.",

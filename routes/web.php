@@ -5,7 +5,6 @@ use App\Http\Controllers\Profile\ImageController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
-use OpenAI\Laravel\Facades\OpenAI;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,11 +46,7 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-Route::get('/about', function () {
-    return view('about');
-});
-
-
+/*
 Route::get('/openai', function(){
 
     $result = OpenAI::chat()->create([
@@ -63,3 +58,4 @@ Route::get('/openai', function(){
 
     echo $result->choices[0]->message->content; // Hello! How can I assist you today?
 });
+*/

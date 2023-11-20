@@ -1,5 +1,7 @@
 {
     "HOME": "HOME",
+    "Phone": "Phone",
+    "Address": "Address",
 
 
     "(and :count more error)": "(and :count more error)",

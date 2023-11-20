@@ -26,6 +26,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'email',
         'image',
         'password',
+        'phone',
+        'address'
     ];
 
     /**
@@ -59,7 +61,7 @@ class User extends Authenticatable implements MustVerifyEmail
     protected function name(): Attribute
     {
         return Attribute::make(
-            get: fn (string $value) => Str::lower($value), //strtoupper()
+            get: fn (string $value) => $value,
         );
     }
 }

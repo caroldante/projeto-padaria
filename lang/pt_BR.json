@@ -1,5 +1,7 @@
 {
     "HOME": "INÍCIO",
+    "Phone": "Telefone",
+    "Address": "Endereço",
 
 
     "(and :count more error)": "(e mais :count erro)",
@@ -9,7 +11,7 @@
     "A Timeout Occurred": "Ocorreu Um Tempo Limite",
     "Accepted": "Aceito",
     "All rights reserved.": "Todos os direitos reservados.",
-    "Already registered?": "Já registrado?",
+    "Already registered?": "Já cadastrado?",
     "Already Reported": "Já Reportado",
     "Are you sure you want to delete your account?": "Tem certeza que quer excluir a sua conta?",
     "Bad Gateway": "Gateway Inválido",
