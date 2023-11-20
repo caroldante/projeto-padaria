@@ -5,6 +5,7 @@ use App\Http\Controllers\Profile\ImageController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,10 +30,6 @@ Route::get('/sobre-nos', function () {
     return view('sobre-nos');
 })->name('sobre-nos');
 
-Route::get('/cardapio', function () {
-    return view('cardapio');
-})->name('cardapio');
-
 Route::get('/contato', function () {
     return view('contato');
 })->name('contato');
@@ -43,6 +40,10 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile/image', [ImageController::class, 'update'])->name('profile.image');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::get('/cardapio', [ProductController::class, 'index'])->name('cardapio'); // Rota para listar todos os produtos
+Route::get('/products/{id}', [ProductController::class, 'show']); // Rota para exibir detalhes de um produto
+
 
 require __DIR__.'/auth.php';
 
