@@ -24,7 +24,7 @@
 <body class="antialiased">
     @include('layouts.navigation')
 
-    
+
     <!-- Page Heading -->
     <!--
     @if (isset($header))
@@ -36,51 +36,117 @@
     @endif
     -->
 
+
     <div class="sm:justify-center sm:items-center relative min-h-screen bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
-    {{-- Verifica se há produtos disponíveis --}}
-@if($products->count())
-<div class="space-y-4"> {{-- Espaçamento vertical entre produtos --}}
-    {{-- Loop através de cada produto --}}
-    @foreach ($products as $product)
-    <div class="md:max-w-xl md:mx-auto flex items-center justify-between p-4">
-        {{-- Verifica se existe um caminho de imagem e exibe a imagem --}}
-        @if($product->product_image)
-        <img src="{{ asset('storage/' . $product->product_image) }}" alt="{{ $product->name }}" class="h-16 w-16 rounded-full object-cover"> {{-- Estilos de imagem do produto --}}
+        <!-- Adicione esta seção no topo do seu arquivo Blade -->
+        <div class="flex justify-center space-x-4 bg-gray-100 p-4">
+            @foreach ($categories as $category)
+            <a href="#{{ strtolower($category->name) }}"
+            class="font-sans px-6 py-2 text-white rounded-3xl bg-azur hover:bg-cafune transition duration-300">
+            {{ mb_strtoupper($category->name, 'UTF-8') }}
+            </a>
+            @endforeach
+        </div>
+
+
+        @if($categories->count())
+        @foreach ($categories as $category)
+        <div id="{{ strtolower($category->name) }}" class="md:max-w-2x1 md:mx-60 items-center justify-between p-4 my-10">
+            <h3 class="font-bold text-xl">{{ $category->name }}</h3> {{-- Nome da categoria --}}
+
+            <div class="space-y-4"> {{-- Produtos da categoria --}}
+            @foreach ($category->products as $product)
+            <div class="flex items-center justify-between p-4">
+                {{-- Verifica se existe um caminho de imagem e exibe a imagem --}}
+                @if($product->product_image)
+                <img src="{{ asset('storage/' . $product->product_image) }}" alt="{{ $product->name }}" class="h-16 w-16 rounded-full object-cover"> {{-- Estilos de imagem do produto --}}
+                @endif
+
+                <div class="flex-grow">
+                    <h2 class="font-bold text-lg">{{ $product->name }}</h2> {{-- Estilos de nome do produto --}}
+
+                </div>
+
+                <div class="">
+                    <p class="text-gray-500 mr-2">R$ {{ number_format($product->price, 2, ',', '.') }}/{{ $product->unit_of_measure }}</p> {{-- Estilos de preço do produto --}}
+                </div>
+
+                {{-- Botões de ação e unidade selecionada --}}
+                <div class="flex items-center">
+                    <button class="text-gray-500 bg-transparent hover:bg-gray-200 p-2 rounded-full">
+                        <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+                            <path d="M19,13H5V11H19V13Z" />
+                        </svg>
+                    </button>
+                    <span class="mx-2 text-lg">1</span> {{-- A unidade selecionada --}}
+                    <button class="text-gray-500 bg-transparent hover:bg-gray-200 p-2 rounded-full">
+                        <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+                            <path d="M13,19V5h-2v14H13Z M19,13H5v-2H19v2Z" />
+                        </svg>
+                    </button>
+                </div>
+
+            </div>
+            <hr>
+            @endforeach
+        </div>
+        </div>
+
+        
+        @endforeach
+        @else
+        <p class="text-center text-gray-500">Nenhum produto encontrado.</p>
         @endif
 
-        <div class="flex-grow">
-            <h2 class="font-bold text-lg">{{ $product->name }}</h2> {{-- Estilos de nome do produto --}}
-            <p class="text-gray-500">R$ {{ number_format($product->price, 2, ',', '.') }}/UN</p> {{-- Estilos de preço do produto --}}
-        </div>
 
-        {{-- Botões de ação e unidade selecionada --}}
-        <div class="flex items-center">
-            <button class="text-gray-500 bg-transparent hover:bg-gray-200 p-2 rounded-full">
-                <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
-                    <path d="M19,13H5V11H19V13Z" />
-                </svg>
-            </button>
-            <span class="mx-2 text-lg">1</span> {{-- A unidade selecionada --}}
-            <button class="text-gray-500 bg-transparent hover:bg-gray-200 p-2 rounded-full">
-                <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
-                    <path d="M13,19V5h-2v14H13Z M19,13H5v-2H19v2Z" />
-                </svg>
-            </button>
+        <!--
+        {{-- Verifica se há produtos disponíveis --}}
+        @if($products->count())
+        <div class="space-y-4"> {{-- Espaçamento vertical entre produtos --}}
+            {{-- Loop através de cada produto --}}
+            @foreach ($products as $product)
+            <div class="md:max-w-2x1 md:mx-60 flex items-center justify-between p-4">
+                {{-- Verifica se existe um caminho de imagem e exibe a imagem --}}
+                @if($product->product_image)
+                <img src="{{ asset('storage/' . $product->product_image) }}" alt="{{ $product->name }}" class="h-16 w-16 rounded-full object-cover"> {{-- Estilos de imagem do produto --}}
+                @endif
+
+                <div class="flex-grow">
+                    <h2 class="font-bold text-lg">{{ $product->name }}</h2> {{-- Estilos de nome do produto --}}
+
+                </div>
+
+                <div class="">
+                    <p class="text-gray-500 mr-2">R$ {{ number_format($product->price, 2, ',', '.') }}/{{ $product->unit_of_measure }}</p> {{-- Estilos de preço do produto --}}
+                </div>
+
+                {{-- Botões de ação e unidade selecionada --}}
+                <div class="flex items-center">
+                    <button class="text-gray-500 bg-transparent hover:bg-gray-200 p-2 rounded-full">
+                        <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+                            <path d="M19,13H5V11H19V13Z" />
+                        </svg>
+                    </button>
+                    <span class="mx-2 text-lg">1</span> {{-- A unidade selecionada --}}
+                    <button class="text-gray-500 bg-transparent hover:bg-gray-200 p-2 rounded-full">
+                        <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+                            <path d="M13,19V5h-2v14H13Z M19,13H5v-2H19v2Z" />
+                        </svg>
+                    </button>
+                </div>
+
+            </div>
+            <hr class="max-w-2x1 mx-60">
+            @endforeach
         </div>
+        @else
+        <p class="text-center text-gray-500">Nenhum produto encontrado.</p>
+        @endif
+        -->
+
+
 
     </div>
-    <hr class="max-w-xl mx-auto">
-    @endforeach
-</div>
-@else
-<p class="text-center text-gray-500">Nenhum produto encontrado.</p>
-@endif
-
-    </div>
-
-
-
-    
 
 </body>
 
