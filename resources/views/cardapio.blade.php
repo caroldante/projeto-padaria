@@ -42,7 +42,7 @@
         <div class="flex justify-center space-x-4 bg-gray-100 p-4">
             @foreach ($categories as $category)
             <a href="#{{ strtolower($category->name) }}"
-            class="font-sans px-6 py-2 text-white rounded-3xl bg-azur hover:bg-cafune transition duration-300">
+            class="font-sans px-5 py-1 text-white rounded-3xl bg-azur hover:bg-cafune transition duration-300">
             {{ mb_strtoupper($category->name, 'UTF-8') }}
             </a>
             @endforeach
