@@ -44,19 +44,4 @@ Route::middleware('auth')->group(function () {
 Route::get('/cardapio', [ProductController::class, 'index'])->name('cardapio'); // Rota para listar todos os produtos
 Route::get('/products/{id}', [ProductController::class, 'show']); // Rota para exibir detalhes de um produto
 
-
 require __DIR__.'/auth.php';
-
-/*
-Route::get('/openai', function(){
-
-    $result = OpenAI::chat()->create([
-        'model' => 'gpt-3.5-turbo',
-        'messages' => [
-            ['role' => 'user', 'content' => 'Hello!'],
-        ],
-    ]);
-
-    echo $result->choices[0]->message->content; // Hello! How can I assist you today?
-});
-*/

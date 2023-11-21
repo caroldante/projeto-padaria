@@ -8,10 +8,8 @@
         </p>
 
         <img class="my-4 w-40 h-40 rounded-full" src="{{ "storage/$user->image" }}" alt="user avatar"/>
-
         
     </header>
-
     
 
     <form id="profileImageForm" method="post" action="{{ route('profile.image') }}" enctype="multipart/form-data">

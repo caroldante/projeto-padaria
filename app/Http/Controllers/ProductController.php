@@ -10,7 +10,7 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::all(); // Obtém todos os produtos
-        return view('products.index', compact('products')); // Retorna a view com os produtos
+        return view('cardapio', compact('products')); // Retorna a view com os produtos
     }
 
     public function show($id)
