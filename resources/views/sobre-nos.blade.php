@@ -118,13 +118,15 @@
 .cafuné-intro {
     max-width: 800px; /* Largura máxima para a seção */
     padding: 40px 20px; /* Padding para não colar no lado da tela */
+    text-align: center; /* Adiciona esta linha para centralizar o conteúdo */
 }
 
 .cafuné-image {
     max-width: 100%; /* Faz a imagem responsiva */
     margin-bottom: 10px; /* Espaço entre a imagem e o texto */
-    margin-left: 150px;
+    display: inline-block; /* Permite que a imagem seja centralizada */
 }
+
 
 .cafuné-text {
     font-size: 20px; /* Tamanho do texto */
@@ -134,7 +136,6 @@
 
 .cafuné-caption {
     font-size: 14px; /* Tamanho da legenda */
-    margin-left: 260px;
     margin-bottom: 60px;
     font-family: 'Lateef', serif;
     color: #707070; /* Cor da legenda */
